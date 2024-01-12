@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "./App.css";
+import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
+import Main from "./components/Main";
+import React, { useEffect, useState } from "react";
 
 function App() {
+  const [navHeight, setNavHeight] = useState(0);
+
+  useEffect(() => {
+    // Calculate the height of the Navigation component
+    const navigationHeight = document.getElementById("navigation").offsetHeight;
+    setNavHeight(navigationHeight);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Navigation />
+      <Main isFixed={navHeight < 96} />
+      <Footer />
+    </main>
   );
 }
 

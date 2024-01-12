@@ -1,0 +1,98 @@
+#footer section .row a > img {
+  height: 5.5rem;
+  margin-bottom: 0.75rem;
+  width: 8.125rem;
+}
+
+#footer span,
+a {
+  font-size: 12px;
+  text-decoration: none;
+  line-height: 1.2rem;
+}
+
+@media (min-width: 0px) {
+  .media-width {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 576px) {
+  .media-width {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .media-width {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    max-width: 1272px;
+  }
+}
+@media (min-width: 1360px) {
+  .media-width {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    max-width: 1356px;
+  }
+}
+
+@media (min-width: 576px) {
+  .media-flex,
+  .detail-col-2 {
+    flex-basis: 50%;
+    flex-grow: 0;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-flex {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+}
+
+@media (min-width: 1360px) {
+  .product {
+    flex-basis: 16.6666666667%;
+    flex-grow: 0;
+    max-width: 16.6666666667%;
+  }
+}
+
+.app-icon {
+  height: 2.5rem;
+  object-fit: contain;
+  width: 7.5rem;
+}
+
+.detail-sendo span {
+  color: white;
+}
+
+@media (min-width: 0px) {
+  .detail-col-1 {
+    flex-basis: 41.6666666667%;
+    flex-grow: 0;
+    max-width: 41.6666666667%;
+  }
+}
+
+.truth-icon {
+  object-fit: contain;
+  height: 33px;
+}
+
+@media (min-width: 0px) {
+  .email-search-button {
+    flex-basis: 16.6666666667%;
+    flex-grow: 0;
+    max-width: 16.6666666667%;
+  }
+}
