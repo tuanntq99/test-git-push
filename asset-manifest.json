@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/clone-sendo/static/css/main.90c0d9b5.css",
+    "main.js": "/clone-sendo/static/js/main.bf188870.js",
+    "static/js/787.751f7bb5.chunk.js": "/clone-sendo/static/js/787.751f7bb5.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/clone-sendo/static/media/bootstrap-icons.66b7720f4a230f1b0341.woff",
+    "static/media/bootstrap-icons.woff2?": "/clone-sendo/static/media/bootstrap-icons.64ed46b247405068ca60.woff2",
+    "index.html": "/clone-sendo/index.html",
+    "main.90c0d9b5.css.map": "/clone-sendo/static/css/main.90c0d9b5.css.map",
+    "main.bf188870.js.map": "/clone-sendo/static/js/main.bf188870.js.map",
+    "787.751f7bb5.chunk.js.map": "/clone-sendo/static/js/787.751f7bb5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90c0d9b5.css",
+    "static/js/main.bf188870.js"
+  ]
+}
