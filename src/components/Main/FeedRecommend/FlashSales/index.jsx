@@ -319,7 +319,7 @@ export default function FlashSale() {
           </div>
           <a
             className="me-2 h-100 flex-fill text-end"
-            href="/"
+            href="/test-git-push"
             style={{ fontSize: "14px" }}
           >
             Xem tất cả
@@ -342,12 +342,12 @@ export default function FlashSale() {
                     { source, image, discount, oldPrice, newPrice, playButton },
                     index
                   ) => (
-                    <a key={index} className="me-3 my-1" href={`${source}`}>
+                    <a key={index} className="me-3 my-1" href={source}>
                       <div className="d-flex flex-column shadow bg-body-tertiary rounded">
                         <div className="position-relative">
                           <img
                             className="rounded-top-3"
-                            src={`${image}`}
+                            src={image}
                             alt="source img"
                             style={{ height: "144px" }}
                           ></img>

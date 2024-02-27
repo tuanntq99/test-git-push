@@ -96,3 +96,69 @@ a {
     max-width: 16.6666666667%;
   }
 }
+
+@media (min-width: 0px) {
+  .media-detail,
+  .media-selection,
+  .media-selection-img {
+    flex-basis: 100%;
+    flex-grow: 0;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-detail {
+    flex-basis: 41.6666666667%;
+    flex-grow: 0;
+    max-width: 41.6666666667%;
+  }
+}
+
+@media (min-width: 576px) {
+  .media-selection {
+    flex-basis: 33.3333333333%;
+    flex-grow: 0;
+    max-width: 33.3333333333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-selection {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+}
+
+@media (min-width: 0px) {
+  .media-selection-img {
+    flex-basis: 100%;
+    flex-grow: 0;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 576px) {
+  .media-selection-img {
+    flex-basis: 66.6666666667%;
+    flex-grow: 0;
+    max-width: 66.6666666667%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-selection-img {
+    flex-basis: 75%;
+    flex-grow: 0;
+    max-width: 75%;
+  }
+}
+
+@media (min-width: 0px) {
+  .quantityBadge {
+    flex-basis: 66.6666666667%;
+    flex-grow: 0;
+    max-width: 66.6666666667%;
+  }
+}

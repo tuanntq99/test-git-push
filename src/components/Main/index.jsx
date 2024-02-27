@@ -4,9 +4,11 @@ import Trademark from "./FeedRecommend/Trademark";
 import UtilitySuggest from "./FeedRecommend/UtilityForYou";
 import ListProduct from "./FeedRecommend/ListProducts";
 
-export default function Main({ isFixed }) {
+export default function Main({ isFixed, listProduct }) {
   const [activeTab, setActiveTab] = useState("choBan");
   const fixRef = useRef(null);
+  // console.log(isFixed);
+  // console.log(listProduct);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +38,10 @@ export default function Main({ isFixed }) {
 
   return (
     <main>
-      <div className="pb-4 user-select-none" style={{ backgroundColor: "#f2f3f4" }}>
+      <div
+        className="pb-4 user-select-none"
+        style={{ backgroundColor: "#f2f3f4" }}
+      >
         {/* nav */}
         <div
           ref={fixRef}
@@ -446,11 +451,11 @@ export default function Main({ isFixed }) {
           </div>
         </div>
         {/* product */}
-        <div id="feed-recommend" className="my-3 user-select-none">
-          <FlashSale/>
-          <Trademark/>
-          <UtilitySuggest/>
-          <ListProduct/>
+        <div id="feed-recommend" className="my-3 user-select-none d-flex flex-column">
+          <FlashSale />
+          <Trademark />
+          <UtilitySuggest />
+          <ListProduct listProduct={listProduct} />
         </div>
       </div>
     </main>

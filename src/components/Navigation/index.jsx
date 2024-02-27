@@ -1,7 +1,8 @@
-import { Col, Row, Input, Button, Dropdown } from "antd";
+import { Col, Row, Input, Button, Dropdown, Badge } from "antd";
 import "./index.css";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { AppstoreOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -23,43 +24,16 @@ const items = [
   ]),
 ];
 
-// const items = [
-//   {
-//     key: '1',
-//     label: (
-//       <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-//         1st menu item
-//       </a>
-//     ),
-//   },
-//   {
-//     key: '2',
-//     label: (
-//       <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-//         2nd menu item (disabled)
-//       </a>
-//     ),
-//     disabled: true,
-//   },
-//   {
-//     key: '3',
-//     label: (
-//       <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-//         3rd menu item (disabled)
-//       </a>
-//     ),
-//     disabled: true,
-//   },
-//   {
-//     key: '4',
-//     danger: true,
-//     label: 'a danger item',
-//   },
-// ];
-
-export default function Navigation() {
+const Navigation = ({ localCount }) => {
   const hideRef = useRef(null);
   const topRef = useRef(null);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // Update localCount whenever count changes
+    setCount(localCount);
+    // console.log(localCount);
+  }, [localCount]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,26 +64,29 @@ export default function Navigation() {
           style={{ height: "2rem" }}
         >
           <Col className="me-4 align-items-center">
-            <a href="/" className="text-decoration-none">
+            <a href="/test-git-push" className="text-decoration-none">
               <span className="text text-white">Tải ứng dụng</span>
             </a>
           </Col>
           <Col className="me-4">
-            <a href="/" className="text-decoration-none">
+            <a href="/test-git-push" className="text-decoration-none">
               <span className="text text-white">Chăm sóc khách hàng</span>
             </a>
           </Col>
         </Row>
       </div>
-      <div className="z-1" ref={topRef} style={{ backgroundColor: "#ee2624" }}>
+      <div className="z-2" ref={topRef} style={{ backgroundColor: "#ee2624" }}>
         <Row
           className="media-width mx-auto align-items-center"
           style={{ margin: "0 auto", height: "4rem" }}
         >
           <Col className="me-3">
-            <a href="/" className="text-decoration-none user-select-none">
+            <NavLink
+              to="/test-git-push"
+              className="text-decoration-none user-select-none"
+            >
               <span className="fs-2 fst-italic fw-bold text-white ">Sendo</span>
-            </a>
+            </NavLink>
           </Col>
           <Col className="d-flex flex-fill user-select-none">
             <Dropdown
@@ -126,7 +103,7 @@ export default function Navigation() {
                 id="sendo-search"
                 placeholder="Tìm trên Sendo"
                 allowClear
-                onSearch=""
+                // onSearch=""
                 className="px-3 py-2 border-white w-100 me-1"
               />
               <Button
@@ -149,13 +126,19 @@ export default function Navigation() {
             </form>
           </Col>
           <Col className="d-flex">
-            <a
-              className="px-4 user-select-none"
-              href="/"
+            <NavLink
+              className="px-4 user-select-none "
+              to="/test-git-push/Bag"
               style={{ fontSize: "24px" }}
             >
-              <i className="bi-cart2 text-white"></i>
-            </a>
+              <i className="bi-cart2 text-white position-relative"></i>
+              <Badge
+                className="position-absolute"
+                offset={[-9, -4]}
+                size="large"
+                count={count}
+              ></Badge>
+            </NavLink>
             <Button className="border-white fw-bold h-auto ">
               <span>Đăng nhập</span>
             </Button>
@@ -164,4 +147,6 @@ export default function Navigation() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(Navigation);

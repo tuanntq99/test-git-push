@@ -17,7 +17,10 @@ export default function Footer() {
             className="media-flex py-2 d-flex flex-column align-items-center text-decoration-none"
             href="https://www.sendo.vn/huong-dan/ve-sendo"
           >
-            <img src="https://media3.scdn.vn/img4/2020/12_16/gJwXr6FFZKZCGKWaz4RB.png"></img>
+            <img
+              src="https://media3.scdn.vn/img4/2020/12_16/gJwXr6FFZKZCGKWaz4RB.png"
+              alt="img-thumbnail"
+            ></img>
             <div
               className="d-flex flex-column align-items-center"
               style={{ maxWidth: "13.125rem" }}
@@ -32,7 +35,7 @@ export default function Footer() {
             className="media-flex py-2 d-flex flex-column align-items-center text-decoration-none"
             href="https://www.sendo.vn/huong-dan/ve-sendo"
           >
-            <img src="https://media3.scdn.vn/img4/2020/12_16/EfZWQVfV6nQzu2vMmnwC.png"></img>
+            <img src="https://media3.scdn.vn/img4/2020/12_16/EfZWQVfV6nQzu2vMmnwC.png" alt="imageIcon"></img>
             <div
               className="d-flex flex-column align-items-center"
               style={{ maxWidth: "13.125rem" }}
@@ -45,7 +48,7 @@ export default function Footer() {
             className="media-flex py-2 d-flex flex-column align-items-center text-decoration-none"
             href="https://www.sendo.vn/huong-dan/ve-sendo"
           >
-            <img src="https://media3.scdn.vn/img4/2020/12_16/j5C6IQz7gIXPgjFJxmRz.png"></img>
+            <img src="https://media3.scdn.vn/img4/2020/12_16/j5C6IQz7gIXPgjFJxmRz.png" alt="imageIcon"></img>
             <div
               className="d-flex flex-column align-items-center"
               style={{ maxWidth: "13.125rem" }}
@@ -60,7 +63,7 @@ export default function Footer() {
             className="media-flex py-2 d-flex flex-column align-items-center text-decoration-none"
             href="https://www.sendo.vn/huong-dan/ve-sendo"
           >
-            <img src="https://media3.scdn.vn/img4/2020/12_16/7AJFQGQ5qvS7gGOz8P7a.png"></img>
+            <img src="https://media3.scdn.vn/img4/2020/12_16/7AJFQGQ5qvS7gGOz8P7a.png" alt="imageIcon"></img>
             <div
               className="d-flex flex-column align-items-center"
               style={{ maxWidth: "13.125rem" }}
@@ -138,7 +141,7 @@ export default function Footer() {
             </a>
             <a
               className="w-75 pe-5 text-black lh-lg"
-              hhref="https://www.sendo.vn/tien-ich/nap-tien?ref=footer"
+              href="https://www.sendo.vn/tien-ich/nap-tien?ref=footer"
             >
               Nạp tiền điện thoại
             </a>
@@ -269,7 +272,7 @@ export default function Footer() {
               <Input
                 id="email-search"
                 placeholder="Email của bạn là"
-                onSearch=""
+                // onSearch=""
                 className="detail-col-2 p-1"
               />
               <Button

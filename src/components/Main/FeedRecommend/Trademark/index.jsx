@@ -5,27 +5,27 @@ export default function Trademark() {
   const listCarousel = [
     {
       image: "https://media3.scdn.vn/img4/2024/01_03/LX3PnvQ145BWybU5shYp.jpg",
-      href: "/",
+      href: "/test-git-push",
     },
     {
       image: "https://media3.scdn.vn/img4/2023/12_29/6yIFz48qqEWh9imBMTXn.jpg",
-      href: "/",
+      href: "/test-git-push",
     },
     {
       image: "https://media3.scdn.vn/img4/2024/01_03/W2hhw4XQd2KC3inPw29P.jpg",
-      href: "/",
+      href: "/test-git-push",
     },
     {
       image: "https://media3.scdn.vn/img4/2024/01_03/AJgcgDATVxArAfKEffZS.jpg",
-      href: "/",
+      href: "/test-git-push",
     },
     {
       image: "https://media3.scdn.vn/img4/2024/01_03/FLYGioEEPPx0UUjIXlax.jpg",
-      href: "/",
+      href: "test-git-push/",
     },
     {
       image: "https://media3.scdn.vn/img4/2024/01_03/gqp87QR8wgcafudXRZiy.jpg",
-      href: "/",
+      href: "/test-git-push",
     },
   ];
 
@@ -82,7 +82,7 @@ export default function Trademark() {
           <div className="p-1 align-items-center">
             <a
               className="text-primary"
-              href="/"
+              href="/test-git-push"
               style={{ fontSize: "14px", fontWeight: "400" }}
             >
               Xem tất cả
@@ -117,7 +117,7 @@ export default function Trademark() {
                       "0 2px 4px 0 rgba(0,0,0,.12), 0 -2px 2px 0 rgba(0,0,0,.04)",
                   }}
                 >
-                  <a href="/" className="h-100">
+                  <a href="/test-git-push" className="h-100">
                     <img
                       className="h-100 w-100"
                       src={`${source}`}
