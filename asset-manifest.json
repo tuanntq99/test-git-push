@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/test-git-push/static/css/main.f1159ca0.css",
-    "main.js": "/test-git-push/static/js/main.8a0b7996.js",
+    "main.js": "/test-git-push/static/js/main.6c8a3d73.js",
     "static/js/787.751f7bb5.chunk.js": "/test-git-push/static/js/787.751f7bb5.chunk.js",
     "static/media/bootstrap-icons.woff?": "/test-git-push/static/media/bootstrap-icons.66b7720f4a230f1b0341.woff",
     "static/media/bootstrap-icons.woff2?": "/test-git-push/static/media/bootstrap-icons.64ed46b247405068ca60.woff2",
     "index.html": "/test-git-push/index.html",
     "main.f1159ca0.css.map": "/test-git-push/static/css/main.f1159ca0.css.map",
-    "main.8a0b7996.js.map": "/test-git-push/static/js/main.8a0b7996.js.map",
+    "main.6c8a3d73.js.map": "/test-git-push/static/js/main.6c8a3d73.js.map",
     "787.751f7bb5.chunk.js.map": "/test-git-push/static/js/787.751f7bb5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1159ca0.css",
-    "static/js/main.8a0b7996.js"
+    "static/js/main.6c8a3d73.js"
   ]
 }
