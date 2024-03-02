@@ -1,5 +1,6 @@
 import { Carousel } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 
 export default function Trademark() {
   const listCarousel = [
@@ -80,27 +81,27 @@ export default function Trademark() {
             </span>
           </div>
           <div className="p-1 align-items-center">
-            <a
+            <NavLink
               className="text-primary"
-              href="/test-git-push"
+              to="/test-git-push"
               style={{ fontSize: "14px", fontWeight: "400" }}
             >
               Xem tất cả
-            </a>
+            </NavLink>
           </div>
         </div>
         {/* section 2 */}
         <Carousel autoplay className="mt-3" style={{ width: "1247px" }}>
           {listCarousel.map(({ image, href }, index) => (
             <div key={index} style={{ border: "8px" }}>
-              <a href={`${href}`}>
+              <NavLink to={`${href}`}>
                 <img
                   className="rounded-3 w-100"
                   src={`${image}`}
                   alt="Trademark_img"
                   style={{ cursor: "pointer" }}
                 ></img>
-              </a>
+              </NavLink>
             </div>
           ))}
         </Carousel>
@@ -117,7 +118,7 @@ export default function Trademark() {
                       "0 2px 4px 0 rgba(0,0,0,.12), 0 -2px 2px 0 rgba(0,0,0,.04)",
                   }}
                 >
-                  <a href="/test-git-push" className="h-100">
+                  <NavLink to="/test-git-push" className="h-100">
                     <img
                       className="h-100 w-100"
                       src={`${source}`}
@@ -131,7 +132,7 @@ export default function Trademark() {
                         {word}
                       </span>
                     </div>
-                  </a>
+                  </NavLink>
                 </div>
               </div>
             ))}

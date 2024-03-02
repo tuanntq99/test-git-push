@@ -1,11 +1,13 @@
 import { Button, Checkbox, Input, Modal, Space } from "antd";
 import { useEffect, useState } from "react";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 const ButtonGroup = Button.Group;
 
-const Bag = ({ pro, listProduct, updatePro }) => {
+const Bag = ({ pro, listProduct, updatePro, sumPrice }) => {
   const [totalCount, setTotalCount] = useState(0);
   const [prosState, setProsState] = useState(pro);
+  const [totalPrice, setTotalPrice] = useState("0");
 
   const increase = (name) => {
     const findPro = prosState.find(
@@ -21,7 +23,6 @@ const Bag = ({ pro, listProduct, updatePro }) => {
         }
       });
       setProsState(updatedPro);
-
     } else {
       console.log("Product not found or count is 0");
     }
@@ -41,7 +42,6 @@ const Bag = ({ pro, listProduct, updatePro }) => {
         }
       });
       setProsState(updatedPro);
-
     } else {
       console.log("Product not found or count is 0");
     }
@@ -93,8 +93,45 @@ const Bag = ({ pro, listProduct, updatePro }) => {
     setTotalCount(sum);
   }, [prosState]);
 
-  console.log(totalCount);
-  console.log(prosState);
+  // console.log(totalCount);
+  // console.log(prosState);
+
+  const extractNumericValue = (str) => {
+    // Remove non-numeric characters and convert to number
+    let numericString = "";
+    for (let i = 0; i < str.length; i++) {
+      const char = str[i];
+      if (!isNaN(char) && char !== " ") {
+        // Check if the character is a number and not a space
+        numericString += char;
+      }
+    }
+    return parseInt(numericString);
+  };
+
+  useEffect(() => {
+    // console.log(prosState);
+    let sum = 0;
+    prosState.forEach((product) => {
+      if (product.check === true) {
+        const value = listProduct
+          .filter((item) => item.nameProduct === product.name)
+          .map((filteredProduct) => filteredProduct.newPrice)[0];
+        sum += extractNumericValue(value) * product.count;
+      }
+    });
+
+    let formattedTotalPrice = sum.toString();
+    // Insert dots for thousands separators
+    formattedTotalPrice = formattedTotalPrice.replace(
+      /\B(?=(\d{3})+(?!\d))/g,
+      "."
+    );
+
+    setTotalPrice(formattedTotalPrice);
+    sumPrice(formattedTotalPrice);
+  }, [prosState, listProduct,sumPrice]);
+  // console.log(totalPrice);
 
   return (
     <div style={{ backgroundColor: "#f2f3f4", paddingBottom: "24px" }}>
@@ -104,7 +141,7 @@ const Bag = ({ pro, listProduct, updatePro }) => {
       >
         <div className="p-2 w-100 d-flex">
           <div className="font700 text20 me-3">
-            Giỏ hàng của bạn (quanity here)
+            Giỏ hàng của bạn ({totalCount})
           </div>
           <Button className="font700 text14">Sửa</Button>
         </div>
@@ -117,7 +154,7 @@ const Bag = ({ pro, listProduct, updatePro }) => {
                   {/* section 1 */}
                   <div className="px-3 py-2 d-flex justify-content-between">
                     <div className="d-flex flex-wrap align-items-center">
-                      <a href="/test-git-push/Bag">
+                      <NavLink to="/test-git-push/Bag">
                         <div
                           className="position-relative d-flex"
                           style={{ height: "24px", width: "24px" }}
@@ -132,13 +169,13 @@ const Bag = ({ pro, listProduct, updatePro }) => {
                             }}
                           ></img>
                         </div>
-                      </a>
-                      <a
-                        href="/test-git-push/Bag"
+                      </NavLink>
+                      <NavLink
+                        to="/test-git-push/Bag"
                         className="ms-3 font700 text14 text-dark "
                       >
                         KHO GIA DỤNG NAM ANH
-                      </a>
+                      </NavLink>
                     </div>
                     <div>
                       <button
@@ -165,15 +202,22 @@ const Bag = ({ pro, listProduct, updatePro }) => {
                           checked={pros.check}
                           onChange={() => onChange(pros.name)}
                         ></Checkbox>
-                        <a href="/test-git-push/Bag">
+                        <NavLink to="/test-git-push/Bag">
                           <div style={{ width: "80px", height: "fitContent" }}>
                             <img
-                              src="https://media3.scdn.vn/img4/2023/10_31/GmO9p8e5EYx8vBARpAtW_simg_de2fe0_500x500_maxb.jpg"
+                              src={listProduct
+                                .filter(
+                                  (product) => product.nameProduct === pros.name
+                                )
+                                .map(
+                                  (filteredProduct) =>
+                                    filteredProduct.listImage[0]
+                                )}
                               style={{ width: "80px" }}
                               alt="img"
                             ></img>
                           </div>
-                        </a>
+                        </NavLink>
                       </div>
                       <div className="p-1 w-100">
                         <div className="p-1">
@@ -195,7 +239,7 @@ const Bag = ({ pro, listProduct, updatePro }) => {
                         <div
                           className="p-1 overflow-hidden text14 font400"
                           style={{
-                            webkitLineClamp: "1",
+                            WebkitLineClamp: "1",
                             display: "-webkit-box",
                             WebkitBoxOrient: "vertical",
                             height: "25px",
@@ -216,28 +260,28 @@ const Bag = ({ pro, listProduct, updatePro }) => {
                           </button>
                           <ul className="dropdown-menu w-100">
                             <li>
-                              <a
+                              <NavLink
                                 className="dropdown-item"
-                                href="/test-git-push/Bag"
+                                to="/test-git-push/Bag"
                               >
                                 Action
-                              </a>
+                              </NavLink>
                             </li>
                             <li>
-                              <a
+                              <NavLink
                                 className="dropdown-item"
-                                href="/test-git-push/Bag"
+                                to="/test-git-push/Bag"
                               >
                                 Another action
-                              </a>
+                              </NavLink>
                             </li>
                             <li>
-                              <a
+                              <NavLink
                                 className="dropdown-item"
-                                href="/test-git-push/Bag"
+                                to="/test-git-push/Bag"
                               >
                                 Something else here
-                              </a>
+                              </NavLink>
                             </li>
                           </ul>
                         </div>
@@ -395,7 +439,7 @@ const Bag = ({ pro, listProduct, updatePro }) => {
               <div className="p-3 d-flex flex-column">
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="font400 text14">Tạm tính:</div>
-                  <div className="font700 text20">0đ</div>
+                  <div className="font700 text20">{totalPrice}đ</div>
                 </div>
                 <Button
                   type="primary"
@@ -403,7 +447,12 @@ const Bag = ({ pro, listProduct, updatePro }) => {
                   danger
                   className="w-100 my-2"
                 >
-                  <span className="text-white font700 text16">Mua ngay</span>
+                  <NavLink
+                    to="/test-git-push/Payment"
+                    className="text-white font700 text16"
+                  >
+                    Mua ngay
+                  </NavLink>
                 </Button>
               </div>
             </div>

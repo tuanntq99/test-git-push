@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export default function UtilitySuggest() {
   const listUtility = [
     {
@@ -77,18 +79,18 @@ export default function UtilitySuggest() {
               <span className=".text1 fw-bold ">Tiện ích cho bạn</span>
             </div>
             <div className="p-1">
-              <a href="/test-git-push" style={{ fontSize: "14px", fontWeight: "400" }}>
+              <NavLink to="/test-git-push" style={{ fontSize: "14px", fontWeight: "400" }}>
                 Xem tất cả
-              </a>
+              </NavLink>
             </div>
           </div>
           {/* section 2 */}
           <div className="mt-3 d-flex">
             {listUtility.map(({ href, bgColor, source, text }, index) => (
-              <a
+              <NavLink
                 key={index}
                 className="me-3 rounded-3 pe-3 ps-3"
-                href={href}
+                to={href}
                 style={{
                   padding: "14px",
                   width: "124.722px",
@@ -111,7 +113,7 @@ export default function UtilitySuggest() {
                     {text}
                   </span>
                 </div>
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>

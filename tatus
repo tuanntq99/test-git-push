@@ -1,0 +1,11 @@
+[33m9538ec2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: Branch: renamed refs/heads/manin to refs/heads/main
+[33m9538ec2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{2}: Branch: renamed refs/heads/main to refs/heads/manin
+[33m9538ec2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{4}: commit: change
+[33mf8362e3[m HEAD@{5}: commit: clone Sendo
+[33mb19ab2b[m HEAD@{6}: reset: moving to HEAD
+[33mb19ab2b[m HEAD@{7}: reset: moving to HEAD
+[33mb19ab2b[m HEAD@{8}: reset: moving to HEAD
+[33mb19ab2b[m HEAD@{9}: reset: moving to HEAD
+[33mb19ab2b[m HEAD@{10}: Branch: renamed refs/heads/master to refs/heads/main
+[33mb19ab2b[m HEAD@{12}: commit: test push
+[33m354de54[m HEAD@{13}: commit (initial): Initialize project using Create React App

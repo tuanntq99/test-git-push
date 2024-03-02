@@ -64,14 +64,14 @@ const Navigation = ({ localCount }) => {
           style={{ height: "2rem" }}
         >
           <Col className="me-4 align-items-center">
-            <a href="/test-git-push" className="text-decoration-none">
+            <NavLink to="/test-git-push" className="text-decoration-none">
               <span className="text text-white">Tải ứng dụng</span>
-            </a>
+            </NavLink>
           </Col>
           <Col className="me-4">
-            <a href="/test-git-push" className="text-decoration-none">
+            <NavLink to="/test-git-push" className="text-decoration-none">
               <span className="text text-white">Chăm sóc khách hàng</span>
-            </a>
+            </NavLink>
           </Col>
         </Row>
       </div>

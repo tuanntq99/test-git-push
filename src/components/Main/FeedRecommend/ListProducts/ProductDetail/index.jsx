@@ -8,7 +8,18 @@ const ButtonGroup = Button.Group;
 const ProductDetail = ({ noPro, listProduct, namePro }) => {
   const [count, setCount] = useState(0);
   const [deadline, setDeadline] = useState(0);
-  const { nameProduct } = useParams();
+  const { nameProductWeb } = useParams();
+  const [product, setProduct] = useState(
+    listProduct.find((item) => item.nameProductWeb === nameProductWeb)
+  );
+
+  useEffect(() => {
+    const productArray = listProduct.find(
+      (item) => item.nameProductWeb === nameProductWeb
+    );
+    setProduct(productArray);
+  }, [listProduct, nameProductWeb]);
+  // console.log(product);
 
   const increase = () => {
     setCount(count + 1);
@@ -23,7 +34,7 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
   const quantityButton = () => {
     noPro(count);
     const productArray = listProduct.find(
-      (product) => product.nameProduct === nameProduct
+      (product) => product.nameProductWeb === nameProductWeb
     );
     namePro(productArray.nameProduct);
   };
@@ -57,28 +68,28 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
             </li>
             <li className="pe-2 text11">/</li>
             <li className="pe-2">
-              <NavLink href="/test-git-push/undefined">
-                <span className="font400 text14">Mẹ và bé</span>
+              <NavLink to={`/test-git-push/${nameProductWeb}`}>
+                <span className="font400 text14">{product.shopType}</span>
               </NavLink>
             </li>
             <li className="pe-2 text11">/</li>
             <li className="pe-2">
-              <NavLink href="/test-git-push/undefined">
-                <span className="font400 text14">Đồ cho bé ra ngoài</span>
+              <NavLink to={`/test-git-push/${nameProductWeb}`}>
+                <span className="font400 text14">{product.typeDetail}</span>
               </NavLink>
             </li>
-            <li className="pe-2 text11">/</li>
+            {/* <li className="pe-2 text11">/</li>
             <li className="pe-2">
-              <NavLink href="/test-git-push/undefined">
+              <NavLink to={`/test-git-push/${nameProductWeb}`}>
                 <span className="font400 text14">
-                  Đồ dùng khác cho bé ra ngoài
+                  Áo khoác chống nắng cho nam
                 </span>
               </NavLink>
-            </li>
+            </li> */}
           </ol>
         </div>
         {/* head detail */}
-        <div className="d-flex flex-wrap w-100">
+        <div className="d-flex flex-wrap w-100 user-select-none">
           <div
             className="media-detail bg-white rounded-start-3 w-100"
             style={{ padding: "24px" }}
@@ -87,37 +98,52 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
               <div className="w-100">
                 <div
                   id="carouselExample"
-                  class="carousel slide position-relative"
+                  className="carousel slide position-relative"
                 >
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img
-                        src="https://media3.scdn.vn/img4/2023/02_04/A9SdYvGD4WuYeRNULwB1_simg_de2fe0_500x500_maxb.jpg"
-                        class="d-block w-100 rounded-2"
-                        alt="..."
-                      ></img>
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src="https://media3.scdn.vn/img4/2023/02_04/LsRh1Kd7wPZC4HaHdtcl_simg_de2fe0_500x500_maxb.jpg"
-                        class="d-block w-100 rounded-2"
-                        alt="..."
-                      ></img>
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src="https://media3.scdn.vn/img4/2023/02_04/XrZa8kFFpi87efleJQEK_simg_de2fe0_500x500_maxb.jpg"
-                        class="d-block w-100 rounded-2"
-                        alt="..."
-                      ></img>
-                    </div>
+                  <div className="carousel-inner position-relative">
+                    {product.listImage.map((imageUrl, index) => (
+                      <div key={index}>
+                        <div
+                          // key={index}
+                          className={`carousel-item ${
+                            index === 0 ? "active" : ""
+                          }`}
+                        >
+                          <img
+                            src={imageUrl}
+                            className="d-block w-100 rounded-2"
+                            alt="..."
+                          ></img>
+                          <span
+                            className="py-1 m-2 position-absolute bottom-0 start-0 rounded-4 "
+                            style={{
+                              padding: "0 12px",
+                              backgroundColor: "#e7e8ea",
+                            }}
+                          >
+                            {index + 1} / {product.listImage.length}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                    {product.modern === 1 && product.flashSale === "true" ? (
+                      <div className="position-absolute w-100 h-100">
+                        <img
+                          src="https://media3.scdn.vn/img4/2020/08_27/40pfudqSCALqYajVtM66_simg_de2fe0_500x500_maxb.png"
+                          className="h-100 w-100"
+                          alt="flashSale"
+                        ></img>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
-                  <span
+                  {/* <span
                     className="py-1 m-2 position-absolute bottom-0 start-0 rounded-4 "
                     style={{ padding: "0 12px", backgroundColor: "#e7e8ea" }}
                   >
-                    6/7
-                  </span>
+                    6 / 7
+                  </span> */}
                   <div className="p-2 position-absolute bottom-0 end-0 rounded-4 ">
                     <button
                       className="me-2 rounded-2 "
@@ -127,7 +153,7 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                         padding: "3px 7px",
                       }}
                     >
-                      <i class="bi-share"></i>
+                      <i className="bi-share"></i>
                     </button>
                     <button
                       className="rounded-2 "
@@ -137,11 +163,11 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                         border: "1px solid #e7e8ea",
                       }}
                     >
-                      <i class="bi bi-heart"></i>
+                      <i className="bi bi-heart"></i>
                     </button>
                   </div>
                   <button
-                    class="carousel-control-prev position-absolute top-50 start-0 rounded-2 opacity-100 bg-white"
+                    className="carousel-control-prev position-absolute top-50 start-0 rounded-2 opacity-100 bg-white"
                     style={{
                       height: "fit-content",
                       width: "fit-content",
@@ -154,14 +180,14 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     data-bs-slide="prev"
                   >
                     <span
-                      class="bi-chevron-left"
+                      className="bi-chevron-left"
                       style={{ height: "24px", width: "24px" }}
                       aria-hidden="true"
                     ></span>
-                    <span class="visually-hidden">Previous</span>
+                    <span className="visually-hidden">Previous</span>
                   </button>
                   <button
-                    class="carousel-control-next position-absolute top-50 end-0 rounded-2 opacity-100 bg-white"
+                    className="carousel-control-next position-absolute top-50 end-0 rounded-2 opacity-100 bg-white"
                     style={{
                       height: "fit-content",
                       width: "fit-content",
@@ -174,47 +200,33 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     data-bs-slide="next"
                   >
                     <span
-                      class="bi-chevron-right"
+                      className="bi-chevron-right"
                       style={{ height: "24px", width: "24px" }}
                       aria-hidden="true"
                     ></span>
-                    <span class="visually-hidden">Next</span>
+                    <span className="visually-hidden">Next</span>
                   </button>
                 </div>
               </div>
               <div className="py-3 w-100">
                 <div
                   id="carouselExample"
-                  class="carousel slide position-relative"
+                  className="carousel slide position-relative"
                 >
-                  <div class="carousel-inner d-flex">
-                    <div class="">
-                      <img
-                        src="https://media3.scdn.vn/img4/2023/02_04/A9SdYvGD4WuYeRNULwB1_simg_de2fe0_500x500_maxb.jpg"
-                        class="d-block rounded-2"
-                        style={{ height: "72px", objectFit: "contain" }}
-                        alt="..."
-                      ></img>
-                    </div>
-                    <div class="">
-                      <img
-                        src="https://media3.scdn.vn/img4/2023/02_04/LsRh1Kd7wPZC4HaHdtcl_simg_de2fe0_500x500_maxb.jpg"
-                        class="d-block rounded-2"
-                        style={{ height: "72px", objectFit: "contain" }}
-                        alt="..."
-                      ></img>
-                    </div>
-                    <div class="">
-                      <img
-                        src="https://media3.scdn.vn/img4/2023/02_04/XrZa8kFFpi87efleJQEK_simg_de2fe0_500x500_maxb.jpg"
-                        class="d-block rounded-2"
-                        style={{ height: "72px", objectFit: "contain" }}
-                        alt="..."
-                      ></img>
-                    </div>
+                  <div className="carousel-inner d-flex">
+                    {product.listImage.map((imageUrl, index) => (
+                      <div key={index} className="p-1">
+                        <img
+                          src={imageUrl}
+                          className="d-block rounded-2"
+                          style={{ height: "72px", objectFit: "contain" }}
+                          alt="..."
+                        ></img>
+                      </div>
+                    ))}
                   </div>
                   <button
-                    class="carousel-control-prev position-absolute top-50 start-0 rounded-2 opacity-100 bg-white"
+                    className="carousel-control-prev position-absolute top-50 start-0 rounded-2 opacity-100 bg-white"
                     style={{
                       height: "fit-content",
                       width: "fit-content",
@@ -227,14 +239,14 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     data-bs-slide="prev"
                   >
                     <span
-                      class="bi-chevron-left"
+                      className="bi-chevron-left"
                       style={{ height: "24px", width: "24px" }}
                       aria-hidden="true"
                     ></span>
-                    <span class="visually-hidden">Previous</span>
+                    <span className="visually-hidden">Previous</span>
                   </button>
                   <button
-                    class="carousel-control-next position-absolute top-50 end-0 rounded-2 opacity-100 bg-white"
+                    className="carousel-control-next position-absolute top-50 end-0 rounded-2 opacity-100 bg-white"
                     style={{
                       height: "fit-content",
                       width: "fit-content",
@@ -247,21 +259,24 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     data-bs-slide="next"
                   >
                     <span
-                      class="bi-chevron-right"
+                      className="bi-chevron-right"
                       style={{ height: "24px", width: "24px" }}
                       aria-hidden="true"
                     ></span>
-                    <span class="visually-hidden">Next</span>
+                    <span className="visually-hidden">Next</span>
                   </button>
                 </div>
               </div>
             </div>
           </div>
           {/* section 2 */}
-          <div className="flex-fill bg-white rounded-end-3">
+          <div
+            className="flex-fill bg-white rounded-end-3"
+            style={{ width: "746.2px" }}
+          >
             {/* Flashsale */}
             <div style={{ padding: "24px 24px 0 24px" }}>
-              <a href="/test-git-push/undefined">
+              <NavLink to={`/test-git-push/${nameProductWeb}`}>
                 <div
                   className="d-flex justify-content-between align-items-center ps-1 pe-2 rounded-2"
                   style={{
@@ -282,7 +297,7 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     <Countdown className="ps-2 font700" value={deadline} />
                   </div>
                 </div>
-              </a>
+              </NavLink>
             </div>
             {/* Selection */}
             <div
@@ -299,30 +314,34 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     WebkitBoxOrient: "vertical",
                   }}
                 >
-                  <img
-                    className="me-2"
-                    style={{ height: "16px" }}
-                    src="https://media3.scdn.vn/img4/2020/07_30/h6fJaiL5WkEbDU2eQRZb.png"
-                    alt="Shop's badge"
-                  ></img>
-                  Áo khoác dù nam có nón 2 lớp hàng đẹp - AKN02
+                  {product.shop === "true" ? (
+                    <img
+                      className="me-2"
+                      style={{ height: "16px" }}
+                      src={product.shopIcon}
+                      alt="Shop's badge"
+                    ></img>
+                  ) : (
+                    ""
+                  )}
+                  {product.nameProduct}
                 </div>
                 <div className="text14 font400 mt-2">Thương hiệu: OEM</div>
                 <div
                   className="text24 font700 mt-2"
                   style={{ color: "#ee2624" }}
                 >
-                  79.000đ
+                  {product.newPrice}
                 </div>
                 <div className="mt-1" style={{ height: "20px" }}>
                   <span className="text14 font400 text-decoration-line-through">
-                    132.000đ
+                    {product.oldPrice}
                   </span>
                   <span
                     className="ms-1 text14 font400"
                     style={{ color: "#ee2624" }}
                   >
-                    Giảm 41%
+                    Giảm {product.discount}
                   </span>
                 </div>
                 <div className="my-1 " style={{ height: "34px" }}></div>
@@ -355,7 +374,7 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     •
                   </div>
                   <i
-                    class="bi-bag d-flex align-items-center"
+                    className="bi-bag d-flex align-items-center"
                     style={{
                       fontSize: "16px",
                       height: "16px",
@@ -373,8 +392,7 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
               </div>
               <hr className="m-0"></hr>
               {/* selection 2 */}
-              <div className="pt-3">
-                {/* short detail */}
+              {/* <div className="pt-3">
                 <div
                   className="d-flex flex-wrap align-items-center"
                   style={{ paddingBottom: "20px" }}
@@ -439,7 +457,6 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     </div>
                   </div>
                 </div>
-                {/* Color & Size Selector */}
                 <div
                   className="d-flex flex-wrap align-items-center"
                   style={{ paddingBottom: "20px" }}
@@ -513,9 +530,9 @@ const ProductDetail = ({ noPro, listProduct, namePro }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* Quantity Selector */}
-              <div className="mb-3 d-flex align-items-center flex-wrap">
+              <div className="mb-3 d-flex align-items-center flex-wrap mt-2">
                 <div
                   className="media-selection text14 font400"
                   style={{ color: "#6f787e" }}

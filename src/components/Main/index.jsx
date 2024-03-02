@@ -3,6 +3,7 @@ import FlashSale from "./FeedRecommend/FlashSales";
 import Trademark from "./FeedRecommend/Trademark";
 import UtilitySuggest from "./FeedRecommend/UtilityForYou";
 import ListProduct from "./FeedRecommend/ListProducts";
+import { NavLink } from "react-router-dom";
 
 export default function Main({ isFixed, listProduct }) {
   const [activeTab, setActiveTab] = useState("choBan");
@@ -173,9 +174,9 @@ export default function Main({ isFixed, listProduct }) {
           <div className="media-width mx-auto">
             <div className="d-flex">
               <div className="p-3 w-100">
-                <a
+                <NavLink
                   className="d-flex flex-column"
-                  href="https://www.sendo.vn/sendofarm/?source_page_id=home&source_pagetab_id=0&source_block_id=shortcut_icon"
+                  to="https://www.sendo.vn/sendofarm/?source_page_id=home&source_pagetab_id=0&source_block_id=shortcut_icon"
                 >
                   <div className="position-relative d-flex flex-column align-items-center">
                     <img
@@ -195,7 +196,7 @@ export default function Main({ isFixed, listProduct }) {
                   >
                     Rau sạch Sendo Farm
                   </span>
-                </a>
+                </NavLink>
               </div>
               <div className="p-3 w-100">
                 <a

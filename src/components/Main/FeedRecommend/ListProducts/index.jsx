@@ -1,6 +1,6 @@
 import { Pagination } from "antd";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function ListProduct({ listProduct }) {
   const [posts, setPosts] = useState([]);
@@ -12,18 +12,9 @@ export default function ListProduct({ listProduct }) {
     setTotal(listProduct.length);
   }, [listProduct]);
 
-  const indexOfLastPage = page + postPerPage;
+  const indexOfLastPage = page * postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
-  const currentPosts = posts.slice(indexOfFirstPage - 1, indexOfLastPage - 1);
-
-  // console.log("here");
-  // console.log(indexOfFirstPage);
-  // console.log(indexOfLastPage);
-  // console.log(currentPosts);
-  // console.log(posts);
-  // console.log(total);
-  // console.log(page);
-  // console.log(postPerPage);
+  const currentPosts = posts.slice(indexOfFirstPage, indexOfLastPage);
 
   const onShowSizeChange = (pageSize) => {
     setPostPerPage(pageSize);
@@ -39,7 +30,7 @@ export default function ListProduct({ listProduct }) {
             className="media-flex product p-2 w-100"
             style={{ height: "374.667px" }}
           >
-            <Link to={`/test-git-push/${product.nameProduct}`}>
+            <NavLink to={`/test-git-push/${product.nameProductWeb}`}>
               <div
                 className={`rounded-3 bg-white d-flex flex-wrap ${
                   product.modern === 2
@@ -135,7 +126,7 @@ export default function ListProduct({ listProduct }) {
                       <img
                         className="rounded-top-3"
                         style={{ width: "100%" }}
-                        src="https://media3.scdn.vn/img4/2023/02_11/Obamlbxt8FsG3HvWKzUi_simg_b5529c_250x250_maxb.png"
+                        src={product.listImage[0]}
                         alt="img-detail"
                       ></img>
                       {product.modern === 1 ? (
@@ -216,21 +207,29 @@ export default function ListProduct({ listProduct }) {
                     )}
                     {/* end case 4 */}
                     <div className="p-2 pt-3 w-100 position-relative bg-white rounded-bottom-3">
-                      {product.modern === 1 ? (
+                      {product.modern === 1 && product.voucher === "true" ? (
                         <div
                           className="position-absolute top-0 d-flex w-100"
                           style={{ transform: "translate(-8px, -60%)" }}
                         >
-                          <img
-                            src={product.voucher1}
-                            alt="clear-sale"
-                            style={{ height: "16px", width: "30%" }}
-                          ></img>
-                          <img
-                            src={product.voucher2}
-                            alt="clear-sale"
-                            style={{ height: "16px", width: "30%" }}
-                          ></img>
+                          {product.voucher1 !== "" ? (
+                            <img
+                              src={product.voucher1}
+                              alt="clear-sale"
+                              style={{ height: "16px", width: "30%" }}
+                            ></img>
+                          ) : (
+                            ""
+                          )}
+                          {product.voucher2 !== "" ? (
+                            <img
+                              src={product.voucher2}
+                              alt="clear-sale"
+                              style={{ height: "16px", width: "30%" }}
+                            ></img>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       ) : (
                         ""
@@ -280,7 +279,7 @@ export default function ListProduct({ listProduct }) {
                               {product.oldPrice}
                             </span>
                             <span className="ms-1 text-danger">
-                              {product.discount}
+                              -{product.discount}
                             </span>
                           </div>
                           <span
@@ -376,12 +375,12 @@ export default function ListProduct({ listProduct }) {
                   </div>
                 )}
               </div>
-            </Link>
+            </NavLink>
           </div>
         ))}
       </div>
       <Pagination
-      className="text-center mt-4"
+        className="mt-4 here d-flex justify-content-center"
         onChange={(value) => setPage(value)}
         pageSize={postPerPage}
         total={total}

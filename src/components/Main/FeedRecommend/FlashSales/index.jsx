@@ -1,4 +1,5 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 
 export default function FlashSale() {
   const listSale = [
@@ -317,13 +318,13 @@ export default function FlashSale() {
               02
             </span>
           </div>
-          <a
+          <NavLink
             className="me-2 h-100 flex-fill text-end"
-            href="/test-git-push"
+            to="/test-git-push"
             style={{ fontSize: "14px" }}
           >
             Xem tất cả
-          </a>
+          </NavLink>
         </div>
         <div className="position-relative">
           <div className="overflow-hidden pb-3">
@@ -342,7 +343,7 @@ export default function FlashSale() {
                     { source, image, discount, oldPrice, newPrice, playButton },
                     index
                   ) => (
-                    <a key={index} className="me-3 my-1" href={source}>
+                    <NavLink key={index} className="me-3 my-1" to={source}>
                       <div className="d-flex flex-column shadow bg-body-tertiary rounded">
                         <div className="position-relative">
                           <img
@@ -388,7 +389,7 @@ export default function FlashSale() {
                           </div>
                         </div>
                       </div>
-                    </a>
+                    </NavLink>
                   )
                 )}
               </div>
